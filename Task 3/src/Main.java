@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter the size of the array: ");
@@ -15,35 +16,35 @@ public class Main {
             numbers[i] = Integer.parseInt(scanner.nextLine());
         }
 
-        int[] uniqueNumbers = new int[size];
-        int uniqueCount = 0;
+
+        int[] numbersWithoutDuplicates = new int[size];
+        int numberOfSavedNumbers = 0;
+
 
         for (int i = 0; i < numbers.length; i++) {
-            boolean alreadyExists = false;
+            boolean duplicate = false;
 
-            for (int j = 0; j < uniqueCount; j++) {
-                if (numbers[i] == uniqueNumbers[j]) {
-                    alreadyExists = true;
+
+            for (int j = 0; j < numberOfSavedNumbers; j++) {
+                if (numbers[i] == numbersWithoutDuplicates[j]) {
+                    duplicate = true;
                     break;
                 }
             }
 
-            if (!alreadyExists) {
-                uniqueNumbers[uniqueCount] = numbers[i];
-                uniqueCount++;
+
+            if (duplicate == false) {
+                numbersWithoutDuplicates[numberOfSavedNumbers] = numbers[i];
+                numberOfSavedNumbers++;
             }
         }
 
         System.out.println("The array without duplicates:");
 
-        for (int i = 0; i < uniqueCount; i++) {
-            System.out.print(uniqueNumbers[i]);
 
-            if (i < uniqueCount - 1) {
-                System.out.print(" ");
-            }
+        for (int i = 0; i < numberOfSavedNumbers; i++) {
+            System.out.print(numbersWithoutDuplicates[i] + " ");
         }
 
-        System.out.println();
     }
 }
